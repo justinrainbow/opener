@@ -32,7 +32,7 @@ bin/opener ./my-file.txt
 
 If you want to use it programmatically you can do that like:
 
-```js
+``` php
 $opener = new Rainbow\Opener();
 
 $opener->open("http://google.com");
