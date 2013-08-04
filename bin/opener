@@ -1,0 +1,46 @@
+#!/usr/bin/env php
+<?php
+
+$rootDir = __DIR__.'/..';
+
+if (file_exists($file = $rootDir.'/vendor/autoload.php')) {
+    require $file;
+} elseif (file_exists($file = $rootDir.'/../../autoload.php')) {
+    require $file;
+} else {
+    echo <<<EOH
+
+You need to set up the project dependencies using the following commands:
+
+  composer install
+
+If you don't have Composer installed globally, try this:
+
+  curl https://getcomposer.org/installer | php
+  php composer.phar install
+
+EOH;
+
+    // This StackOverflow answer has great info on common exit codes:
+    // http://stackoverflow.com/questions/1101957/are-there-any-standard-exit-status-codes-in-linux
+    exit(78);
+}
+
+// Pop off those first to argv values.  We really don't care about them.
+$args = array_slice($argv, 0);
+while ($_SERVER['PHP_SELF'] != array_shift($args));
+
+
+if (empty($args)) {
+    echo <<<EOT
+
+Nothing to open...  try adding some params instead.
+
+EOT;
+    exit(64);
+}
+
+$opener = new Rainbow\Opener();
+$opener->open($args, function ($res) {
+    exit(0);
+});

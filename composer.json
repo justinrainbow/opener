@@ -1,0 +1,23 @@
+{
+    "name": "rainbow/opener",
+    "description": "PHP version of the Node.js opener module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Justin Rainbow",
+            "email": "justin.rainbow@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~3.7.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Rainbow\\": "src/"
+        }
+    },
+    "bin": ["bin/opener"]
+}
